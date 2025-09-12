@@ -7,14 +7,14 @@ pipeline {
 	}
 
 	environment {
-    	IMAGE_PATH = "hooni"
-		REPLACE_NAME = "hooni-front"
+    	IMAGE_PATH = "profile"
+		REPLACE_NAME = "hooni-profile"
 		IMAGE_NAME = "${REPLACE_NAME}:v"
 		IMAGE_VERSION = "0.0.${BUILD_NUMBER}"
 
 		ARGOCD_GIT_URL = "github.com/hooni-8/argocd.git"
 		ARGOCD_GIT_BRANCH = "main"
-		ARGOCD_DEPLOY_YAML_FILE = "hooni/hooni/hooni-front/deployment.yaml"
+		ARGOCD_DEPLOY_YAML_FILE = "hooni/profile/deployment.yaml"
 	}
 
         stages {
