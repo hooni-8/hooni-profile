@@ -17,7 +17,7 @@ export default function Home() {
                             <Typography variant="h3" fontWeight="bold">안녕하세요, {profileData.PROFILE.name}입니다.</Typography>
                             <Typography variant="body1" sx={{ mt: 2 }}>{profileData.PROFILE.bio}</Typography>
                             <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
-                                <Button variant="contained" startIcon={<Description />} href={profileData.PROFILE.resumeUrl}>이력서 다운로드</Button>
+                                {/*<Button variant="contained" startIcon={<Description />} href={profileData.PROFILE.resumeUrl}>이력서 다운로드</Button>*/}
                                 <Button variant="outlined" href="#projects">프로젝트 보기</Button>
                             </Box>
                         </motion.div>
