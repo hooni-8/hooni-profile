@@ -74,8 +74,8 @@ export default function Section_4() {
         <section id="skills" className={`skills-section ${isVisible ? 'visible' : ''}`}>
             <div className="skills-container">
                 <div className="section-header">
-                    <h2 className="section-title">Skills & Experience</h2>
-                    <p className="section-subtitle">제가 가진 기술과 경험을 소개합니다</p>
+                    <h2 className="section-title">Skills</h2>
+                    <p className="section-subtitle">제가 가진 기술을 소개합니다</p>
                 </div>
 
                 {/* Tab Navigation */}
