@@ -12,8 +12,7 @@ $bg-secondary: #f7fafc;
 $bg-dark: #1a202c;
 $border-light: #e2e8f0;
 $primary-gradient: linear-gradient(135deg, $primary-color, $secondary-color);
-$bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-$section-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+$bg-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
 
 // Mixins
 @mixin card-shadow($opacity: 0.08) {
@@ -55,7 +54,7 @@ $section-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
 // Main Section
 .skills-section {
   padding: 5rem 2rem;
-  background: $section-gradient;
+  background: $bg-gradient;
   min-height: 100vh;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
@@ -64,7 +63,6 @@ $section-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
     margin: 0 auto;
   }
 
-  // Section Header
   .section-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -120,7 +118,6 @@ $section-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
   }
 }
 
-// Tab Content
 .tab-content {
   min-height: 500px;
 }
@@ -215,60 +212,65 @@ $section-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
   }
 }
 
-// Soft Skills
+// Soft Skills - 완전히 새로운 구조
 .soft-skills {
   .soft-skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
 
     .soft-skill-card {
       background: $bg-primary;
-      padding: 2rem;
       border-radius: 20px;
       @include card-shadow;
       @include transition;
-      position: relative;
       opacity: 0;
       transform: translateY(30px);
+      overflow: hidden;
+      position: relative;
+      display: block;
+      width: 100%;
 
       &.animate {
         opacity: 1;
         transform: translateY(0);
+        @include transition(all, 0.6s, ease-out);
       }
 
       &:hover {
-        transform: translateY(-8px);
+        transform: translateY(-10px);
         @include hover-shadow;
       }
 
       .skill-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 1rem;
+        padding: 2rem 2rem 1rem;
+        text-align: center;
+        border-bottom: 1px solid $border-light;
 
         .skill-name {
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           color: $text-primary;
           font-weight: 600;
-          margin-bottom: 0.5rem;
+          margin-bottom: 1rem;
         }
 
         .skill-level {
           .level-indicator {
             display: flex;
-            gap: 0.3rem;
+            gap: 0.4rem;
+            justify-content: center;
 
             .level-dot {
-              width: 8px;
-              height: 8px;
+              width: 10px;
+              height: 10px;
               border-radius: 50%;
               background: $border-light;
               @include transition;
 
               &.active {
-                background: $primary-gradient;
+                background: $primary-color;
+                box-shadow: 0 0 10px rgba($primary-color, 0.3);
               }
             }
           }
@@ -276,247 +278,28 @@ $section-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
       }
 
       .skill-description {
+        padding: 1.5rem 2rem;
         color: $text-secondary;
         line-height: 1.6;
-        margin-bottom: 1.5rem;
+        text-align: center;
+        font-size: 1rem;
       }
 
       .skill-progress-circle {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
+        padding: 1rem 2rem 2rem;
         @include flex-center;
+        flex-direction: column;
+
+        svg {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 0.5rem;
+        }
 
         .progress-text {
-          position: absolute;
-          font-size: 0.8rem;
-          font-weight: 600;
+          font-size: 1rem;
+          font-weight: 700;
           color: $primary-color;
-        }
-      }
-    }
-  }
-}
-
-// Experience
-.experience-content {
-  .experience-timeline {
-    position: relative;
-    margin-bottom: 4rem;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 30px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: $primary-gradient;
-    }
-
-    .experience-item {
-      position: relative;
-      margin-bottom: 3rem;
-      padding-left: 80px;
-      opacity: 0;
-      transform: translateX(-30px);
-      @include transition(all, 0.6s, ease-out);
-
-      &.animate {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      .timeline-dot {
-        position: absolute;
-        left: 20px;
-        top: 1rem;
-        width: 20px;
-        height: 20px;
-        background: $bg-primary;
-        border: 4px solid $primary-color;
-        border-radius: 50%;
-        @include card-shadow;
-      }
-
-      .experience-card {
-        background: $bg-primary;
-        padding: 2rem;
-        border-radius: 15px;
-        @include card-shadow;
-        @include transition;
-
-        &:hover {
-          transform: translateY(-5px);
-          @include hover-shadow;
-        }
-
-        .experience-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 1rem;
-
-          .company-info {
-            .position {
-              font-size: 1.3rem;
-              color: $text-primary;
-              font-weight: 600;
-              margin-bottom: 0.3rem;
-            }
-
-            .company {
-              color: $primary-color;
-              font-weight: 500;
-            }
-          }
-
-          .period-info {
-            text-align: right;
-
-            .period {
-              display: block;
-              color: $text-secondary;
-              font-size: 0.9rem;
-              margin-bottom: 0.5rem;
-            }
-
-            .type {
-              padding: 0.3rem 0.8rem;
-              border-radius: 12px;
-              font-size: 0.8rem;
-              font-weight: 600;
-
-              &.정규직 {
-                background: rgba($success-color, 0.1);
-                color: $success-color;
-              }
-
-              &.프리랜서 {
-                background: rgba($warning-color, 0.1);
-                color: $warning-color;
-              }
-            }
-          }
-        }
-
-        .experience-description {
-          color: $text-secondary;
-          line-height: 1.6;
-          margin-bottom: 1.5rem;
-        }
-
-        .achievements {
-          margin-bottom: 1.5rem;
-
-          h6 {
-            color: $text-primary;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-          }
-
-          ul {
-            list-style: none;
-            padding: 0;
-
-            li {
-              position: relative;
-              padding-left: 1.5rem;
-              color: $text-secondary;
-              line-height: 1.5;
-              margin-bottom: 0.5rem;
-
-              &::before {
-                content: '✨';
-                position: absolute;
-                left: 0;
-                top: 0;
-              }
-            }
-          }
-        }
-
-        .experience-skills {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-
-          .experience-skill {
-            background: rgba($accent-color, 0.1);
-            color: $accent-color;
-            padding: 0.3rem 0.8rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-          }
-        }
-      }
-    }
-  }
-
-  // Certifications
-  .certifications-section {
-    .certifications-title {
-      font-size: 2rem;
-      color: $text-primary;
-      text-align: center;
-      margin-bottom: 2rem;
-      font-weight: 600;
-    }
-
-    .certifications-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-
-      .certification-card {
-        background: $bg-primary;
-        padding: 1.5rem;
-        border-radius: 15px;
-        @include card-shadow;
-        @include transition;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        opacity: 0;
-        transform: translateY(20px);
-
-        &.animate {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        &:hover {
-          transform: translateY(-5px);
-          @include hover-shadow;
-        }
-
-        .cert-icon {
-          font-size: 2.5rem;
-          flex-shrink: 0;
-        }
-
-        .cert-info {
-          flex: 1;
-
-          .cert-name {
-            font-size: 1.1rem;
-            color: $text-primary;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-          }
-
-          .cert-issuer {
-            color: $text-secondary;
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-          }
-
-          .cert-date {
-            color: $primary-color;
-            font-size: 0.8rem;
-            font-weight: 500;
-          }
         }
       }
     }
@@ -624,91 +407,44 @@ $section-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
   .soft-skills {
     .soft-skills-grid {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 2rem;
 
       .soft-skill-card {
-        padding: 1.5rem;
-
         .skill-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 1rem;
+          padding: 1.5rem 1.5rem 1rem;
 
           .skill-name {
             font-size: 1.2rem;
+            margin-bottom: 0.8rem;
           }
-        }
 
-        .skill-progress-circle {
-          position: static;
-          margin-top: 1rem;
-        }
-      }
-    }
-  }
+          .skill-level {
+            .level-indicator {
+              gap: 0.3rem;
 
-  .experience-content {
-    .experience-timeline {
-      &::before {
-        left: 15px;
-      }
-
-      .experience-item {
-        padding-left: 50px;
-
-        .timeline-dot {
-          left: 5px;
-          width: 16px;
-          height: 16px;
-          border-width: 3px;
-        }
-
-        .experience-card {
-          padding: 1.5rem;
-
-          .experience-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-
-            .period-info {
-              text-align: left;
-
-              .period {
-                margin-bottom: 0.3rem;
+              .level-dot {
+                width: 8px;
+                height: 8px;
               }
             }
           }
-
-          .achievements {
-            ul li {
-              font-size: 0.9rem;
-            }
-          }
         }
-      }
-    }
 
-    .certifications-section {
-      .certifications-title {
-        font-size: 1.6rem;
-      }
+        .skill-description {
+          padding: 1rem 1.5rem;
+          font-size: 0.9rem;
+        }
 
-      .certifications-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        .skill-progress-circle {
+          padding: 1rem 1.5rem 1.5rem;
 
-        .certification-card {
-          padding: 1.2rem;
-
-          .cert-icon {
-            font-size: 2rem;
+          svg {
+            width: 60px;
+            height: 60px;
           }
 
-          .cert-info {
-            .cert-name {
-              font-size: 1rem;
-            }
+          .progress-text {
+            font-size: 0.9rem;
           }
         }
       }
@@ -761,20 +497,35 @@ $section-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
     }
   }
 
-  .experience-content {
-    .experience-timeline {
-      .experience-item {
-        padding-left: 40px;
+  .soft-skills {
+    .soft-skills-grid {
+      gap: 1.5rem;
 
-        .experience-card {
-          padding: 1rem;
+      .soft-skill-card {
+        .skill-header {
+          padding: 1.2rem 1.2rem 0.8rem;
 
-          .experience-header {
-            .company-info {
-              .position {
-                font-size: 1.1rem;
-              }
-            }
+          .skill-name {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+          }
+        }
+
+        .skill-description {
+          padding: 0.8rem 1.2rem;
+          font-size: 0.85rem;
+        }
+
+        .skill-progress-circle {
+          padding: 0.8rem 1.2rem 1.2rem;
+
+          svg {
+            width: 50px;
+            height: 50px;
+          }
+
+          .progress-text {
+            font-size: 0.8rem;
           }
         }
       }

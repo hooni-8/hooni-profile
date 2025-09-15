@@ -63,21 +63,6 @@ export default function Section_1() {
                 </div>
             </div>
 
-            {/*<div className="social-links">*/}
-            {/*    <a href="#" className="social-link" title="GitHub" aria-label="GitHub">*/}
-            {/*        📱*/}
-            {/*    </a>*/}
-            {/*    <a href="#" className="social-link" title="LinkedIn" aria-label="LinkedIn">*/}
-            {/*        💼*/}
-            {/*    </a>*/}
-            {/*    <a href="#" className="social-link" title="Email" aria-label="Email">*/}
-            {/*        ✉️*/}
-            {/*    </a>*/}
-            {/*    <a href="#" className="social-link" title="Blog" aria-label="Blog">*/}
-            {/*        📝*/}
-            {/*    </a>*/}
-            {/*</div>*/}
-
             <div className="scroll-indicator">
                 <small>아래로 스크롤</small>
             </div>

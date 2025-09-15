@@ -25,34 +25,50 @@ export default function Section_2() {
         return () => observer.disconnect();
     }, []);
 
-    const journey = [
-        {
-            year: "2022",
-            title: "개발 여정 시작",
-            description: "웹 개발에 흥미를 느끼고 첫 코드를 작성했습니다."
-        },
-        {
-            year: "2023",
-            title: "첫 프로젝트 완성",
-            description: "React로 첫 웹 애플리케이션을 만들어 배포했습니다."
-        },
-        {
-            year: "2024",
-            title: "팀 프로젝트 경험",
-            description: "협업을 통해 더 큰 규모의 프로젝트를 성공적으로 완료했습니다."
-        },
-        {
-            year: "2025",
-            title: "지속적인 성장",
-            description: "새로운 기술을 학습하며 더 나은 개발자가 되기 위해 노력하고 있습니다."
-        }
-    ];
-
     const interests = [
         { icon: "💻", title: "클린 코드", description: "읽기 쉽고 유지보수가 편한 코드 작성" },
-        { icon: "🎨", title: "UI/UX 디자인", description: "사용자 경험을 고려한 인터페이스 설계" },
         { icon: "📚", title: "새로운 기술 학습", description: "끊임없는 학습을 통한 기술 역량 향상" },
         { icon: "🤝", title: "팀워크", description: "협업을 통해 더 나은 결과물 만들기" }
+    ];
+
+    const experiences = [
+        {
+            position: "DEV",
+            company: "데이터쿡",
+            period: "2025.06 - 2025.08",
+            type: "정규직",
+            description: "공공기관 유지보수 프로젝트를 담당했습니다.",
+            achievements: [
+                "한국문화예술위원회 유지보수",
+            ],
+            skills: ["Java", "Spring", "Mybatis", "MariaDB", "JSP", "jQuery", "JavaScript"]
+        },
+        {
+            position: "DEV",
+            company: "컴즈 주식회사",
+            period: "2023.09 - 2025.06",
+            type: "정규직",
+            description: "사내 AI 서비스 개발 및 마켓컬리 정산 시스템 운영 유지보수를 진행하였습니다.",
+            achievements: [
+                "자사 AI 연동 서비스 개발",
+                "사내 운영/개발 서버 & CI/CD 구축",
+                "마켓컬리 1P/3P 정산 결제 시스템 운영 및 유지보수",
+                "사내 인사관리 시스템 운영 및 유지보수"
+            ],
+            skills: ["Java", "Spring Boot", "Mybatis", "JPA", "PostgreSQL", "MySQL", "React", "Vue", "JSP", "JavaScript"]
+        },
+        {
+            position: "DEV",
+            company: "주식회사 크림솔루션",
+            period: "2021.12 - 2023.08",
+            type: "정규직",
+            description: "시흥시 쏙(SSOC) 및 리조트 운영을 위한 Back-Office 시스템 개발을 진행하였습니다.",
+            achievements: [
+                "블랙스톤 벨포레 SER App 구축",
+                "시흥시 온라인 평생학습 플랫폼 구축"
+            ],
+            skills: ["Java", "Spring", "Mybatis", "ibatis", "Oracle", "MySQL", "JSP", "JavaScript","jQuery"]
+        }
     ];
 
     return (
@@ -68,7 +84,7 @@ export default function Section_2() {
                         <div className="story-text">
                             <h3>개발자로서의 여정</h3>
                             <p>
-                                안녕하세요! 사용자 중심의 웹 개발을 추구하는 김개발입니다.
+                                안녕하세요! 사용자 중심의 개발을 추구하는 이상훈입니다.
                                 처음 코드를 작성했을 때의 그 짜릿한 순간을 지금도 기억하고 있어요.
                             </p>
                             <p>
@@ -96,23 +112,41 @@ export default function Section_2() {
                         </div>
                     </div>
 
-                    <div className="journey-timeline">
-                        <h3>나의 개발 여정</h3>
-                        <div className="timeline">
-                            {journey.map((item, index) => (
-                                <div key={index} className={`timeline-item ${isVisible ? 'animate' : ''}`}
-                                     style={{animationDelay: `${index * 0.2}s`}}>
+                    <div className="experience-content">
+                        <div className="experience-timeline">
+                            {experiences.map((exp, index) => (
+                                <div key={index} className={`experience-item ${isVisible ? 'animate' : ''}`} style={{animationDelay: `${index * 0.2}s`}}>
                                     <div className="timeline-dot"></div>
-                                    <div className="timeline-content">
-                                        <div className="timeline-year">{item.year}</div>
-                                        <h4>{item.title}</h4>
-                                        <p>{item.description}</p>
+                                    <div className="experience-card">
+                                        <div className="experience-header">
+                                            <div className="company-info">
+                                                <h4 className="position">{exp.position}</h4>
+                                                <h5 className="company">{exp.company}</h5>
+                                            </div>
+                                            <div className="period-info">
+                                                <span className="period">{exp.period}</span>
+                                                <span className={`type ${exp.type}`}>{exp.type}</span>
+                                            </div>
+                                        </div>
+                                        <p className="experience-description">{exp.description}</p>
+                                        <div className="achievements">
+                                            <h6>진행한 프로젝트:</h6>
+                                            <ul>
+                                                {exp.achievements.map((achievement, achIndex) => (
+                                                    <li key={achIndex}>{achievement}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div className="experience-skills">
+                                            {exp.skills.map((skill, skillIndex) => (
+                                                <span key={skillIndex} className="experience-skill">{skill}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
-
                     <div className="interests-grid">
                         <h3>관심사 & 가치관</h3>
                         <div className="interests">
@@ -138,14 +172,6 @@ export default function Section_2() {
                                 <div className="fact">
                                     <span className="fact-emoji">🌙</span>
                                     <p>밤에 더 집중이 잘 되는 올빼미형</p>
-                                </div>
-                                <div className="fact">
-                                    <span className="fact-emoji">🎮</span>
-                                    <p>게임을 통해 논리적 사고력 키우기</p>
-                                </div>
-                                <div className="fact">
-                                    <span className="fact-emoji">📖</span>
-                                    <p>기술 블로그 읽기가 취미</p>
                                 </div>
                             </div>
                         </div>
