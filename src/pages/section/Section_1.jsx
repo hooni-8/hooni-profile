@@ -1,6 +1,5 @@
 import React from 'react';
 
-import '@styles/Home.scss'
 import '@styles/section/Section_1.scss'
 
 export default function Section_1() {

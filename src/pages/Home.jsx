@@ -7,7 +7,6 @@ import Section_2 from "@pages/section/Section_2";
 import Section_3 from "@pages/section/Section_3";
 import Section_4 from "@pages/section/Section_4";
 import Section_5 from "@pages/section/Section_5";
-import Section_6 from "@pages/section/Section_6";
 
 export default function Home() {
     return (
@@ -17,7 +16,6 @@ export default function Home() {
             <Section_3 />
             <Section_4 />
             <Section_5 />
-            <Section_6 />
         </>
     );
 }
