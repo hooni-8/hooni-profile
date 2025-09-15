@@ -388,15 +388,15 @@ $text-tertiary: rgba(255, 255, 255, 0.85);
 
       .profile-container {
         .profile-image {
-          width: 180px;
-          height: 180px;
+          width: 300px;
+          height: 300px;
           font-size: 2.5rem;
           animation: none; // 모바일에서 float 애니메이션 비활성화
         }
 
         .profile-ring {
-          width: 200px;
-          height: 200px;
+          width: 320px;
+          height: 320px;
           animation-duration: 30s; // 회전 속도 느리게
         }
       }
@@ -490,14 +490,14 @@ $text-tertiary: rgba(255, 255, 255, 0.85);
     .hero-visual {
       .profile-container {
         .profile-image {
-          width: 150px;
-          height: 150px;
+          width: 300px;
+          height: 300px;
           font-size: 2rem;
         }
 
         .profile-ring {
-          width: 170px;
-          height: 170px;
+          width: 320px;
+          height: 320px;
         }
       }
     }
