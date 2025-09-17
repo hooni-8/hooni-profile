@@ -10,68 +10,38 @@ export default function Section_3() {
         {
             id: 1,
             title: "한국문화예술위원회 유지보수",
-            description: "description",
-            category: "fullstack",
             tags: ["Java", "Spring", "Mybatis", "MariaDB", "JSP", "jQuery", "JavaScript"],
             image: "📋",
-            githubUrl: "#",
-            liveUrl: "#",
-            featured: true
         },
         {
             id: 2,
             title: "자사 AI 연동 서비스",
-            description: "description",
-            category: "fullstack",
             tags: ["Java", "Spring Boot", "React", "Mybatis", "PostgreSQL", "React", "Chat-GPT"],
             image: "💬",
-            githubUrl: "#",
-            liveUrl: "#",
-            featured: false
         },
         {
             id: 3,
             title: "사내 운영/개발 서버 & CI/CD 구축",
-            description: "description",
-            category: "frontend",
             tags: ["CentOS", "Kubernetes", "GitLab", "Jenkins", "Nexus", "ArgoCD"],
             image: "🌤️",
-            githubUrl: "#",
-            liveUrl: "#",
-            featured: true
         },
         {
             id: 4,
             title: "마켓컬리 1P/3P 정산 결제 시스템 운영 및 유지보수",
-            description: "description",
-            category: "backend",
             tags: ["Java", "Spring Boot", "Mybatis", "JPA", "MySQL"],
             image: "🛒",
-            githubUrl: "#",
-            liveUrl: "#",
-            featured: false
         },
         {
             id: 5,
             title: "블랙스톤 벨포레 SER App 구축",
-            description: "description",
-            category: "frontend",
             tags: ["Java", "Spring", "ibatis", "Oracle", "JSP", "JavaScript" ,"jQuery"],
             image: "🎨",
-            githubUrl: "#",
-            liveUrl: "#",
-            featured: true
         },
         {
             id: 6,
             title: "시흥시 온라인 평생학습 플랫폼 구축",
-            description: "description",
-            category: "fullstack",
             tags: ["Java", "Spring", "ibatis", "MySQL", "JSP", "JavaScript", "jQuery"],
             image: "📊",
-            githubUrl: "#",
-            liveUrl: "#",
-            featured: false
         }
     ];
 
@@ -112,11 +82,9 @@ export default function Section_3() {
                                  style={{animationDelay: `${index * 0.1}s`}}>
                                 <div className="card-header">
                                     <div className="project-emoji">{project.image}</div>
-                                    {/*<div className="project-category">{project.category}</div>*/}
                                 </div>
                                 <div className="card-body">
                                     <h4 className="project-title">{project.title}</h4>
-                                    <p className="project-description">{project.description}</p>
                                     <div className="project-tags">
                                         {project.tags.map((tag, tagIndex) => (
                                             <span key={tagIndex} className="project-tag">{tag}</span>
@@ -124,11 +92,8 @@ export default function Section_3() {
                                     </div>
                                 </div>
                                 <div className="card-footer">
-                                    <a href={project.githubUrl} className="project-btn secondary">
-                                        <span>📱</span> Code
-                                    </a>
-                                    <a href={project.liveUrl} className="project-btn primary">
-                                        <span>🌐</span> Demo
+                                    <a href="#" className="project-btn primary">
+                                        자세히 보기
                                     </a>
                                 </div>
                             </div>
