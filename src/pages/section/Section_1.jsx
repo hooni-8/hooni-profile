@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowDown } from 'lucide-react';
 
 import '@styles/section/Section_1.scss'
 
@@ -64,6 +65,9 @@ export default function Section_1() {
             </div>
 
             <div className="scroll-indicator">
+                <div className="arrow-down">
+                    <ArrowDown size={30} strokeWidth={5}/>
+                </div>
                 <small>아래로 스크롤</small>
             </div>
         </section>

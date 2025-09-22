@@ -1,13 +1,12 @@
 import React from 'react';
-import {BrowserRouter as Router } from 'react-router-dom';
-
-import DashBoard from '@layout/DashBoard';
+import {BrowserRouter} from 'react-router-dom';
+import Router from "@nav/Router";
 
 function App() {
     return (
-        <Router>
-            <DashBoard />
-        </Router>
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
     );
 }
 

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '@styles/Home.scss'
-
 import Section_1 from "@pages/section/Section_1";
 import Section_2 from "@pages/section/Section_2";
 import Section_3 from "@pages/section/Section_3";

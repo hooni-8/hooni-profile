@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import '@styles/Home.scss'
 import '@styles/section/Section_5.scss'
-import githubLogo from '@assets/imgs/github.png';
 
 export default function Section_5() {
     const [isVisible, setIsVisible] = useState(false);
@@ -30,17 +28,6 @@ export default function Section_5() {
             description: '언제든지 통화 가능합니다.',
             link: 'tel:+821099110268'
         },
-        {
-            icon: '📍',
-            title: 'Location',
-            value: 'Seoul, South Korea',
-            description: '서울 기반으로 활동하고 있습니다',
-            link: ''
-        },
-    ];
-
-    const socialLinks = [
-        { name: 'GitHub', icon: '📱', url: '#', color: '#333333' },
     ];
 
     useEffect(() => {
@@ -67,10 +54,6 @@ export default function Section_5() {
             setFormData({ name: '', email: '', subject: '', message: '' });
             setTimeout(() => setSubmitStatus(''), 3000);
         }, 2000);
-    };
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (

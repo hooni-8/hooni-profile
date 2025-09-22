@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { ChevronUp } from 'lucide-react';
 import '@styles/layout/ScrollToTop.scss';
 
-const ScrollToTop = () => {
+export default function ScrollToTop() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -34,10 +35,9 @@ const ScrollToTop = () => {
             aria-label="맨 위로 이동"
             title="맨 위로"
         >
-            <span className="scroll-icon">⬆️</span>
-            <span className="scroll-text">TOP</span>
+            <span className="scroll-icon">
+                <ChevronUp />
+            </span>
         </button>
     );
 };
-
-export default ScrollToTop;

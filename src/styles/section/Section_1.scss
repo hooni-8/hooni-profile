@@ -239,8 +239,7 @@ $text-tertiary: rgba(255, 255, 255, 0.85);
     text-align: center;
     animation: bounce 2s infinite;
 
-    &::before {
-      content: '↓';
+    .arrow-down {
       display: block;
       font-size: 2rem;
       margin-bottom: 0.5rem;
