@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import '@styles/section/Section_4.scss'
+import '@styles/pages/section/Section_4.scss'
 
 export default function Section_4() {
     const [isVisible, setIsVisible] = useState(false);

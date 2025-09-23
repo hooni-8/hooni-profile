@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import '@styles/section/Section_3.scss'
+import '@styles/pages/section/Section_3.scss'
 import githubLogo from '@assets/imgs/github.png';
 
 import Section3_modal from '@layout/modal/Section_3_modal';

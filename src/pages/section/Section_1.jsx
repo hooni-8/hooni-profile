@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 
-import '@styles/section/Section_1.scss'
+import '@styles/pages/section/Section_1.scss'
 
 export default function Section_1() {
 
