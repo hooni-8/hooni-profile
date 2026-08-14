@@ -24,9 +24,9 @@ export default function Section_5() {
         {
             icon: '📱',
             title: 'Phone',
-            value: '+82 10-9911-0268',
+            value: '010-9483-0268',
             description: '언제든지 통화 가능합니다.',
-            link: 'tel:+821099110268'
+            link: 'tel:+821094830268'
         },
     ];
 
