@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "hooni-profile",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "CI=false craco build",
+    "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"
   },

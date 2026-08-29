@@ -1,28 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '@styles/layout/modal/Section_3_modal.scss'
 
-export default function Section_3_modal({ project, isOpen, onClose }) {
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
+export default function ProjectModal({ project, isOpen, onClose }) {
+    const modalRef = useRef(null);
+    const closeButtonRef = useRef(null);
 
-        // ESC 키로 모달 닫기
-        const handleEscKey = (e) => {
+    useEffect(() => {
+        if (!isOpen) return undefined;
+
+        const previouslyFocusedElement = document.activeElement;
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        closeButtonRef.current?.focus();
+
+        const handleKeyDown = (e) => {
             if (e.key === 'Escape') {
                 onClose();
+                return;
+            }
+
+            if (e.key !== 'Tab' || !modalRef.current) return;
+
+            const focusableElements = modalRef.current.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement?.focus();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement?.focus();
             }
         };
 
-        if (isOpen) {
-            document.addEventListener('keydown', handleEscKey);
-        }
+        document.addEventListener('keydown', handleKeyDown);
 
         return () => {
-            document.body.style.overflow = 'unset';
-            document.removeEventListener('keydown', handleEscKey);
+            document.body.style.overflow = previousOverflow;
+            document.removeEventListener('keydown', handleKeyDown);
+            previouslyFocusedElement?.focus();
         };
     }, [isOpen, onClose]);
 
@@ -35,39 +54,43 @@ export default function Section_3_modal({ project, isOpen, onClose }) {
         }
     };
 
+    const titleId = `project-modal-title-${project.id}`;
+
     return (
         <div className="modal-backdrop" onClick={handleBackdropClick}>
-            <div className="modal-container">
-                {/* 모달 헤더 */}
+            <div
+                ref={modalRef}
+                className="modal-container"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby={titleId}
+            >
                 <div className="modal-header">
-                    <div className="project-icon">{project.image}</div>
                     <div className="project-info">
-                        <h2 className="project-title">{project.title}</h2>
+                        <span className="modal-eyebrow">PROJECT DETAIL</span>
+                        <h2 id={titleId} className="project-title">{project.title}</h2>
+                        <div className="modal-meta">
+                            <span>{project.duration}</span>
+                            {project.role && <span>{project.role}</span>}
+                            {project.teamSize && <span>{project.teamSize}명 참여</span>}
+                        </div>
                     </div>
-                    <button className="close-btn" onClick={onClose} aria-label="모달 닫기">
-                        ✕
+                    <button ref={closeButtonRef} className="close-btn" onClick={onClose} aria-label="모달 닫기">
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
 
-                {/* 모달 바디 */}
                 <div className="modal-body">
-
-                    {/* 프로젝트 상세 정보 */}
                     <div className="project-details">
                         <div className="detail-section">
-                            <h3>📝 프로젝트 소개</h3>
+                            <span className="detail-index">01</span>
+                            <h3>프로젝트 소개</h3>
                             <p>{project.description}</p>
                         </div>
 
-                        {project.role &&
-                            <div className="detail-section">
-                                <h3>👤 역할</h3>
-                                <p>{project.role}</p>
-                            </div>
-                        }
-
                         <div className="detail-section">
-                            <h3>🔧 사용 기술</h3>
+                            <span className="detail-index">02</span>
+                            <h3>사용 기술</h3>
                             <div className="tech-tags">
                                 {project.tags.map((tag, index) => (
                                     <span key={index} className="tech-tag">{tag}</span>
@@ -76,7 +99,8 @@ export default function Section_3_modal({ project, isOpen, onClose }) {
                         </div>
 
                         <div className="detail-section">
-                            <h3>💼 주요 업무</h3>
+                            <span className="detail-index">03</span>
+                            <h3>주요 업무 및 기여</h3>
                             <ul className="feature-list">
                                 {project.tasks.map((task, index) => (
                                     <li key={index}>{task}</li>
@@ -102,29 +126,12 @@ export default function Section_3_modal({ project, isOpen, onClose }) {
                             }
                         </div>
 
-                        <div className="detail-section">
-                            <h3>📅 개발 기간</h3>
-                            <div className="period-info">
-                                <div className="period-item">
-                                    <span className="period-label">개발 기간:</span>
-                                    <span
-                                        className="period-value">{project.duration}</span>
-                                </div>
-                                {project.teamSize && (
-                                    <div className="period-item">
-                                        <span className="period-label">팀 구성:</span>
-                                        <span className="period-value">{project.teamSize}</span>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                {/* 모달 푸터 */}
                 <div className="modal-footer">
                     <button className="close-footer-btn" onClick={onClose}>
-                        닫기
+                        프로젝트 목록으로 돌아가기
                     </button>
                 </div>
             </div>

@@ -1,537 +1,95 @@
-// Variables
-$primary-color: #667eea;
-$secondary-color: #764ba2;
-$accent-color: #4299e1;
-$success-color: #48bb78;
-$error-color: #f56565;
-$warning-color: #ed8936;
-$text-primary: #2d3748;
-$text-secondary: #4a5568;
-$text-light: #718096;
-$bg-primary: #ffffff;
-$bg-secondary: #f7fafc;
-$bg-dark: #1a202c;
-$border-light: #e2e8f0;
-$border-focus: #667eea;
-$primary-gradient: linear-gradient(135deg, $primary-color, $secondary-color);
-$bg-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+$ink: #172033;
+$muted: #687386;
+$line: #dde3ec;
+$accent: #667eea;
 
-// Mixins
-@mixin card-shadow($opacity: 0.08) {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, $opacity);
-}
-
-@mixin hover-shadow($opacity: 0.15) {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, $opacity);
-}
-
-@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
-  transition: $property $duration $timing;
-}
-
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin gradient-text {
-  background: $primary-gradient;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-@mixin button-style {
-  padding: 0.75rem 1.5rem;
-  border-radius: 25px;
-  font-weight: 600;
-  text-decoration: none;
-  @include transition;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-@mixin input-style {
-  width: 100%;
-  padding: 1rem;
-  border: 2px solid $border-light;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-family: inherit;
-  @include transition;
-  background: $bg-primary;
-
-  &:focus {
-    outline: none;
-    border-color: $border-focus;
-    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
-  }
-
-  &::placeholder {
-    color: $text-light;
-  }
-}
-
-// Main Section
 .contact-section {
-  padding: 5rem 2rem;
-  background: $bg-gradient;
-  color: white;
   min-height: 100vh;
+  box-sizing: border-box;
+  padding: 4.25rem 2rem 1.5rem;
+  background: #f8f9fc;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-  .contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  // Section Header
+  .contact-container { display: flex; width: min(1180px, 100%); min-height: calc(100vh - 5.75rem); margin: 0 auto; flex-direction: column; }
   .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-
-    .section-title {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      @include gradient-text;
-    }
-
-    .section-subtitle {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-  }
-
-  .contact-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
-
-  // Subsection Title
-  .subsection-title {
-    font-size: 2rem;
-    color: white;
-    margin-bottom: 2rem;
-    font-weight: 600;
-    text-align: center;
+    max-width: 720px;
+    margin-bottom: 2.5rem;
+    .section-eyebrow { display: block; margin-bottom: 0.9rem; color: $accent; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.16em; }
+    .section-title { margin: 0 0 1rem; color: $ink; font-size: clamp(2.7rem, 6vw, 4.6rem); font-weight: 750; letter-spacing: -0.055em; line-height: 1; }
+    .section-subtitle { margin: 0; color: $muted; font-size: 1.05rem; line-height: 1.7; }
   }
 }
 
-// Contact Info Section
+.contact-content { flex: 1; }
 .contact-info-section {
-  .contact-info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
 
-    .contact-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 2rem;
-      border-radius: 20px;
-      text-decoration: none;
-      color: white;
-      @include transition;
-      opacity: 0;
-      transform: translateY(30px);
-
-      &.animate {
-        opacity: 1;
-        transform: translateY(0);
-        @include transition(all, 0.6s, ease-out);
-      }
-
-      &:hover {
-        transform: translateY(-8px);
-        background: rgba(255, 255, 255, 0.15);
-        @include card-shadow(0.2);
-      }
-
-      .contact-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: block;
-      }
-
-      .contact-details {
-        .contact-title {
-          font-size: 1.2rem;
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-          color: white;
-        }
-
-        .contact-value {
-          font-size: 1.1rem;
-          margin-bottom: 0.5rem;
-          color: rgba(255, 255, 255, 0.9);
-          font-weight: 500;
-        }
-
-        .contact-description {
-          color: rgba(255, 255, 255, 0.7);
-          font-size: 0.9rem;
-          line-height: 1.4;
-        }
-      }
-    }
+.contact-intro {
+  > span { display: block; margin-bottom: 0.9rem; color: $accent; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; }
+  .subsection-title {
+    margin: 0;
+    color: $ink;
+    font-size: clamp(1.7rem, 3vw, 2.55rem);
+    font-weight: 720;
+    letter-spacing: -0.045em;
+    line-height: 1.35;
+    span { display: block; white-space: nowrap; }
   }
 }
 
-// Contact Form Section
-.contact-form-section {
-  .contact-form {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 3rem;
-    border-radius: 20px;
-    opacity: 0;
-    transform: translateY(30px);
-
-    &.animate {
-      opacity: 1;
-      transform: translateY(0);
-      @include transition(all, 0.6s, ease-out);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-
-      label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-        color: white;
-      }
-
-      input,
-      textarea {
-        @include input-style;
-        color: $text-primary;
-
-        &:focus {
-          border-color: rgba(255, 255, 255, 0.5);
-          box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-        }
-      }
-
-      textarea {
-        resize: vertical;
-        min-height: 120px;
-      }
-    }
-
-    .submit-btn {
-      @include button-style;
-      background: $primary-gradient;
-      color: white;
-      font-size: 1.1rem;
-      padding: 1rem 2rem;
-      width: 100%;
-      @include flex-center;
-      gap: 0.8rem;
-      position: relative;
-      overflow: hidden;
-
-      &:hover:not(:disabled) {
-        transform: translateY(-2px);
-        @include hover-shadow;
-      }
-
-      &:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-      }
-
-      &.loading {
-        .loading-spinner {
-          width: 20px;
-          height: 20px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          border-top: 2px solid white;
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-        }
-      }
-
-      span:not(.loading-spinner) {
-        font-size: 1.2rem;
-      }
-    }
-
-    .submit-success,
-    .submit-error {
-      margin-top: 1rem;
-      padding: 1rem;
-      border-radius: 12px;
-      @include flex-center;
-      gap: 0.5rem;
-      font-weight: 500;
-    }
-
-    .submit-success {
-      background: rgba($success-color, 0.2);
-      border: 1px solid rgba($success-color, 0.3);
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .submit-error {
-      background: rgba($error-color, 0.2);
-      border: 1px solid rgba($error-color, 0.3);
-      color: rgba(255, 255, 255, 0.9);
-    }
-  }
+.contact-info-grid { display: flex; flex-direction: column; border-top: 1px solid $line; }
+.contact-card {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid $line;
+  color: inherit;
+  opacity: 0;
+  text-decoration: none;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.3s ease, padding 0.3s ease;
+  &.animate { opacity: 1; transform: translateY(0); }
+  &:hover { padding-right: 0.4rem; padding-left: 0.4rem; .contact-arrow { transform: translate(2px, -2px); } }
 }
 
-// Social Section
-.social-section {
-  text-align: center;
+.contact-index { color: $accent; font-size: 0.7rem; font-weight: 800; }
+.contact-title { margin: 0 0 0.35rem; color: $ink; font-size: 0.8rem; font-weight: 750; letter-spacing: 0.04em; text-transform: uppercase; }
+.contact-value { margin: 0 0 0.35rem; color: $ink; font-size: clamp(1rem, 2.2vw, 1.3rem); font-weight: 650; word-break: break-all; }
+.contact-description { color: $muted; font-size: 0.78rem; }
+.contact-arrow { color: $ink; font-size: 1.2rem; transition: transform 0.25s ease; }
 
-  .social-description {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-
-    .social-link {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 1.5rem;
-      border-radius: 15px;
-      text-decoration: none;
-      color: white;
-      @include transition;
-      @include flex-center;
-      flex-direction: column;
-      gap: 0.8rem;
-      min-width: 120px;
-      opacity: 0;
-      transform: translateY(20px);
-
-      &.animate {
-        opacity: 1;
-        transform: translateY(0);
-        @include transition(all, 0.6s, ease-out);
-      }
-
-      &:hover {
-        transform: translateY(-8px);
-        background: rgba(255, 255, 255, 0.15);
-        border-color: var(--hover-color);
-        @include card-shadow(0.2);
-      }
-
-      .social-icon {
-        font-size: 2rem;
-      }
-
-      .social-name {
-        font-weight: 500;
-        font-size: 0.9rem;
-      }
-    }
-  }
-}
-
-// Contact Footer
 .contact-footer {
-  margin-top: 5rem;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 2.5rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid $line;
+  .footer-info { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  h4, p { margin: 0; }
+  h4 { color: $ink; font-size: 0.9rem; }
+  p { color: $muted; font-size: 0.72rem; }
+}
 
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@media (max-width: 760px) {
+  .contact-section { padding: 4.5rem 1rem 1.5rem; .contact-container { min-height: calc(100vh - 6rem); } .section-header { margin-bottom: 3rem; } }
+  .contact-info-section { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-intro .subsection-title { font-size: clamp(1.45rem, 6.5vw, 1.9rem); }
+  .contact-footer { margin-top: 4rem; .footer-info { align-items: flex-start; flex-direction: column; } }
+}
 
-    .footer-info {
-      h4 {
-        color: white;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
+@media (max-width: 420px) {
+  .contact-card { grid-template-columns: 28px minmax(0, 1fr) auto; gap: 0.65rem; }
+}
 
-      p {
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 0.3rem;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
+@media (max-width: 360px) {
+  .contact-intro .subsection-title {
+    font-size: clamp(1.3rem, 6vw, 1.5rem);
   }
 }
 
-// Animations
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// Responsive Design
-@media (max-width: 768px) {
-  .contact-section {
-    padding: 3rem 1rem;
-
-    .section-header {
-      margin-bottom: 3rem;
-
-      .section-title {
-        font-size: 2.5rem;
-      }
-
-      .section-subtitle {
-        font-size: 1rem;
-      }
-    }
-
-    .contact-content {
-      gap: 3rem;
-    }
-
-    .subsection-title {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-    }
-  }
-
-  .contact-info-section {
-    .contact-info-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-
-      .contact-card {
-        padding: 1.5rem;
-
-        .contact-icon {
-          font-size: 2rem;
-        }
-
-        .contact-details {
-          .contact-title {
-            font-size: 1.1rem;
-          }
-
-          .contact-value {
-            font-size: 1rem;
-          }
-        }
-      }
-    }
-  }
-
-  .contact-form-section {
-    .contact-form {
-      padding: 2rem;
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .form-group {
-        margin-bottom: 1.2rem;
-
-        input,
-        textarea {
-          padding: 0.8rem;
-        }
-      }
-
-      .submit-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-      }
-    }
-  }
-
-  .social-section {
-    .social-links {
-      gap: 1rem;
-
-      .social-link {
-        padding: 1.2rem;
-        min-width: 100px;
-
-        .social-icon {
-          font-size: 1.8rem;
-        }
-
-        .social-name {
-          font-size: 0.8rem;
-        }
-      }
-    }
-  }
-
-  .contact-footer {
-    margin-top: 4rem;
-
-    .footer-content {
-      flex-direction: column;
-      gap: 2rem;
-      text-align: center;
-
-      .footer-info {
-        h4 {
-          font-size: 1.3rem;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-section {
-    padding: 2rem 0.5rem;
-  }
-
-  .contact-form-section {
-    .contact-form {
-      padding: 1.5rem;
-
-      .submit-btn {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-      }
-    }
-  }
-
-  .social-section {
-    .social-links {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.8rem;
-
-      .social-link {
-        padding: 1rem;
-        min-width: auto;
-      }
-    }
-  }
+@media (prefers-reduced-motion: reduce) {
+  .contact-card { opacity: 1; transform: none; transition: none; }
 }

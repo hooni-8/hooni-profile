@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
 import '@styles/pages/section/Section_2.scss'
+import { formatCareerDuration } from '../../utils/career';
 
-export default function Section_2() {
+export default function AboutSection() {
     const [isVisible, setIsVisible] = useState(false);
+    const careerDuration = formatCareerDuration();
 
     useEffect(() => {
         setIsVisible(true);
@@ -33,41 +35,58 @@ export default function Section_2() {
 
     const experiences = [
         {
-            position: "DEV",
+            position: "Freelance Full Stack Developer",
+            company: "프리랜서",
+            period: "2025.11 - 현재 (2027.02 종료 예정)",
+            type: "프리랜서",
+            description: "건설근로자공제회 차세대 시스템의 구축 완료 이후 운영·유지보수와 기능 개선을 담당하고 있습니다.",
+            achievements: [
+                "Vue 기반 사용자 화면과 Java·Spring 기반 업무 기능의 오류를 분석하고 개선",
+                "MyBatis와 Tibero 기반 데이터 조회·처리 로직을 점검하여 운영 이슈에 대응",
+                "기존 업무 흐름을 파악하고 사용자 요청사항을 반영하여 시스템 사용성과 안정성 향상",
+            ],
+            skills: ["Java", "Spring", "MyBatis", "Tibero", "Vue", "iDesigner", "JavaScript"]
+        },
+        {
+            position: "Full Stack Developer",
             company: "데이터쿡",
             period: "2025.06 - 2025.08",
             type: "정규직",
-            description: "공공기관 유지보수 프로젝트를 담당했습니다.",
+            description: "한국문화예술위원회의 인문360 및 인문네트워크 서비스를 운영·유지보수했습니다.",
             achievements: [
-                "한국문화예술위원회 유지보수",
+                "인문360 및 인문네트워크의 사용자·관리자 화면과 백엔드 기능 유지보수",
+                "운영 중 발생한 오류의 원인을 분석하고 수정하여 서비스 안정성 향상",
+                "기존 설계 구조와 데이터 처리 로직을 개선하여 코드 유지보수성과 처리 효율 향상",
             ],
-            skills: ["Java", "Spring", "Mybatis", "MariaDB", "JSP", "jQuery", "JavaScript"]
+            skills: ["Java", "Spring", "MyBatis", "MariaDB", "JSP", "jQuery", "JavaScript"]
         },
         {
-            position: "DEV",
+            position: "Full Stack Developer",
             company: "컴즈 주식회사",
             period: "2023.09 - 2025.06",
             type: "정규직",
-            description: "사내 AI 서비스 개발 및 마켓컬리 정산 시스템 운영 유지보수를 진행하였습니다.",
+            description: "사내 AI 서비스 개발부터 배포 환경 구축, 대규모 정산 시스템 운영까지 다양한 프로젝트를 수행했습니다.",
             achievements: [
-                "자사 AI 연동 서비스 개발",
-                "사내 운영/개발 서버 & CI/CD 구축",
-                "마켓컬리 1P/3P 정산 결제 시스템 운영 및 유지보수",
-                "사내 인사관리 시스템 운영 및 유지보수"
+                "OpenAI API를 활용한 마인드맵·테스트케이스 생성·업무지원 서비스 3종 개발 및 배포",
+                "대한민국 소프트웨어 대전 2024에서 AI 서비스 전시 부스 운영과 제품 시연 참여",
+                "GitLab·Jenkins·Nexus·ArgoCD를 연동한 Kubernetes 기반 CI/CD 파이프라인 구축",
+                "마켓컬리 정산 스케줄러와 지급 지시 프로세스를 개선하여 정산 처리 안정성 향상"
             ],
-            skills: ["Java", "Spring Boot", "Mybatis", "JPA", "PostgreSQL", "MySQL", "React", "Vue", "JSP", "JavaScript"]
+            skills: ["Java", "Spring Boot", "MyBatis", "JPA", "PostgreSQL", "MySQL", "React", "Vue", "JSP", "JavaScript"]
         },
         {
-            position: "DEV",
+            position: "Full Stack Developer",
             company: "주식회사 크림솔루션",
-            period: "2021.12 - 2023.08",
+            period: "2021.12.31 - 2023.08",
             type: "정규직",
-            description: "시흥시 쏙(SSOC) 및 리조트 운영을 위한 Back-Office 시스템 개발을 진행하였습니다.",
+            description: "공공 교육 플랫폼과 리조트 운영 시스템의 사용자 화면 및 Back-Office를 개발했습니다.",
             achievements: [
-                "블랙스톤 벨포레 SER App 구축",
-                "시흥시 온라인 평생학습 플랫폼 구축"
+                "시흥교육캠퍼스 쏙(SSOC)의 사용자 화면과 Back-Office 신규 기능 개발 및 고도화",
+                "기존 경기도 평생학습포털 소스를 분석하고 시흥시 요구사항에 맞는 기능으로 확장",
+                "블랙스톤 벨포레 리조트 운영을 위한 Back-Office 신규 화면과 업무 기능 개발",
+                "운영 사용자 요청을 반영한 기능 개선과 유지보수를 통해 업무 처리 편의성 향상"
             ],
-            skills: ["Java", "Spring", "Mybatis", "ibatis", "Oracle", "MySQL", "JSP", "JavaScript","jQuery"]
+            skills: ["Java", "Spring", "MyBatis", "iBatis", "Oracle", "MySQL", "JSP", "JavaScript", "jQuery"]
         }
     ];
 
@@ -75,14 +94,16 @@ export default function Section_2() {
         <section id="about" className={`about-section ${isVisible ? 'visible' : ''}`}>
             <div className="about-container">
                 <div className="section-header">
+                    <span className="section-eyebrow">ABOUT & EXPERIENCE</span>
                     <h2 className="section-title">About Me</h2>
-                    <p className="section-subtitle">저에 대해 조금 더 알아보세요</p>
+                    <p className="section-subtitle">개발자로서 중요하게 생각하는 기준과 실무 경험입니다.</p>
                 </div>
 
                 <div className="about-content">
                     <div className="about-story">
                         <div className="story-text">
-                            <h3>개발자로서의 여정</h3>
+                            <span className="story-label">MY APPROACH</span>
+                            <h3>기능 구현을 넘어,<br/>운영까지 생각합니다.</h3>
                             <p>
                                 안녕하세요! 사용자 중심의 개발을 추구하는 이상훈입니다.
                                 처음 기능을 완성했을 때의 그 짜릿한 순간을 지금도 기억하고 있습니다.
@@ -98,25 +119,24 @@ export default function Section_2() {
                         </div>
 
                         <div className="story-image">
-                            <div className="image-container">
-                                <div className="coding-animation">
-                                    <div className="screen">
-                                        <div className="code-line"></div>
-                                        <div className="code-line short"></div>
-                                        <div className="code-line"></div>
-                                        <div className="code-line medium"></div>
-                                    </div>
-                                    <div className="keyboard"></div>
-                                </div>
+                            <div className="profile-summary-card">
+                                <span className="summary-label">AT A GLANCE</span>
+                                <div className="summary-item"><strong>{careerDuration}</strong><span>개발 실무 경력</span></div>
+                                <div className="summary-item"><strong>7</strong><span>참여 프로젝트</span></div>
+                                <div className="summary-item"><strong>Full Stack</strong><span>Frontend · Backend</span></div>
                             </div>
                         </div>
                     </div>
 
                     <div className="experience-content">
+                        <div className="subsection-header">
+                            <span>CAREER</span>
+                            <h3>경력</h3>
+                        </div>
                         <div className="experience-timeline">
                             {experiences.map((exp, index) => (
                                 <div key={index} className={`experience-item ${isVisible ? 'animate' : ''}`} style={{animationDelay: `${index * 0.2}s`}}>
-                                    <div className="timeline-dot"></div>
+                                    <div className="timeline-index">{String(index + 1).padStart(2, '0')}</div>
                                     <div className="experience-card">
                                         <div className="experience-header">
                                             <div className="company-info">
@@ -130,7 +150,7 @@ export default function Section_2() {
                                         </div>
                                         <p className="experience-description">{exp.description}</p>
                                         <div className="achievements">
-                                            <h6>진행한 프로젝트:</h6>
+                                            <h6>주요 기여 및 성과</h6>
                                             <ul>
                                                 {exp.achievements.map((achievement, achIndex) => (
                                                     <li key={achIndex}>{achievement}</li>
@@ -148,32 +168,19 @@ export default function Section_2() {
                         </div>
                     </div>
                     <div className="interests-grid">
-                        <h3>관심사 & 가치관</h3>
+                        <div className="subsection-header">
+                            <span>VALUES</span>
+                            <h3>개발할 때 중요하게 생각하는 것</h3>
+                        </div>
                         <div className="interests">
                             {interests.map((interest, index) => (
                                 <div key={index} className={`interest-card ${isVisible ? 'animate' : ''}`}
                                      style={{animationDelay: `${index * 0.1}s`}}>
-                                    <div className="interest-icon">{interest.icon}</div>
+                                    <span className="interest-index">0{index + 1}</span>
                                     <h4>{interest.title}</h4>
                                     <p>{interest.description}</p>
                                 </div>
                             ))}
-                        </div>
-                    </div>
-
-                    <div className="personal-touch">
-                        <div className="fun-facts">
-                            <h3>재미있는 사실들 ✨</h3>
-                            <div className="facts-grid">
-                                <div className="fact">
-                                    <span className="fact-emoji">☕</span>
-                                    <p>하루에 커피 3잔은 기본</p>
-                                </div>
-                                <div className="fact">
-                                    <span className="fact-emoji">🌙</span>
-                                    <p>밤에 더 집중이 잘 되는 올빼미형</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

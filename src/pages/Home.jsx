@@ -1,20 +1,20 @@
 import React from 'react';
 
-import Section_1 from "@pages/section/Section_1";
-import Section_2 from "@pages/section/Section_2";
-import Section_3 from "@pages/section/Section_3";
-import Section_4 from "@pages/section/Section_4";
-import Section_5 from "@pages/section/Section_5";
+import HeroSection from "@pages/section/Section_1";
+import AboutSection from "@pages/section/Section_2";
+import ProjectsSection from "@pages/section/Section_3";
+import SkillsSection from "@pages/section/Section_4";
+import ContactSection from "@pages/section/Section_5";
 import ScrollToTop from "@layout/ScrollToTop";
 
 export default function Home() {
     return (
         <>
-            <Section_1 />
-            <Section_2 />
-            <Section_3 />
-            <Section_4 />
-            <Section_5 />
+            <HeroSection />
+            <AboutSection />
+            <ProjectsSection />
+            <SkillsSection />
+            <ContactSection />
             <ScrollToTop/>
         </>
     );

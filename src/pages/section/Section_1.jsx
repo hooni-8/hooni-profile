@@ -2,10 +2,13 @@ import React from 'react';
 import { ArrowDown } from 'lucide-react';
 
 import '@styles/pages/section/Section_1.scss'
+import { formatCareerDuration, getCareerSummary } from '../../utils/career';
 
-export default function Section_1() {
+export default function HeroSection() {
 
-    const techStack = ['Java', 'Spring Boot', 'MyBatis', 'JPA', 'MySql', 'Oracle', 'PostgreSql', 'React', 'JSP', 'Jquery', 'Kubernetes'];
+    const techStack = ['Java', 'Spring Boot', 'MyBatis', 'JPA', 'MySQL', 'Oracle', 'PostgreSQL', 'React', 'JSP', 'jQuery', 'Kubernetes'];
+    const { yearNumber } = getCareerSummary();
+    const careerLabel = formatCareerDuration();
 
     const handleScrollToSection = (sectionId) => {
         const element = document.getElementById(sectionId);
@@ -15,23 +18,17 @@ export default function Section_1() {
     };
 
     return (
-        <section className="hero-section">
-            <div className="floating-elements">
-                <div className="floating-element"></div>
-                <div className="floating-element"></div>
-                <div className="floating-element"></div>
-            </div>
-
+        <section id="top" className="hero-section">
             <div className="hero-container">
                 <div className="hero-content">
-                    <div className="hero-greeting">안녕하세요! 👋</div>
+                    <div className="hero-greeting"><span></span>FULL STACK DEVELOPER</div>
                     <h1 className="hero-title">
-                        노력하는 개발자<br/>이상훈입니다.
+                        <span>문제를 이해하고,</span>
+                        <strong>끝까지 해결합니다.</strong>
                     </h1>
-                    <p className="hero-subtitle">사용자 중심의 혁신적인 웹 경험을 만듭니다</p>
                     <p className="hero-description">
-                        빠르게 배우고 적용하며 문제 해결에 집중하는 4년 차 개발자입니다. <br />
-                        클린 코드와 협업을 중요하게 생각합니다.
+                        안녕하세요, {yearNumber}년 차 개발자 이상훈입니다.<br/>
+                        사용자 화면부터 서버와 데이터까지 연결해 안정적인 서비스를 만듭니다.
                     </p>
 
                     <div className="tech-stack">
@@ -39,28 +36,51 @@ export default function Section_1() {
                             <span key={index} className="tech-item">{tech}</span>
                         ))}
                     </div>
-
-                    <div className="hero-buttons">
-                        <button
-                            className="btn-primary"
-                            onClick={() => handleScrollToSection('projects')}
-                        >
-                            프로젝트 보기
-                        </button>
-                        <button
-                            className="btn-secondary"
-                            onClick={() => handleScrollToSection('contact')}
-                        >
-                            연락하기
-                        </button>
-                    </div>
                 </div>
 
                 <div className="hero-visual">
-                    <div className="profile-container">
-                        <div className="profile-ring"></div>
-                        <div className="profile-image"></div>
+                    <div className="hero-profile-card">
+                        <div className="profile-monogram">LSH</div>
+                        <div className="profile-copy">
+                            <span className="profile-label">PROFILE</span>
+                            <h2>이상훈</h2>
+                            <p>Full Stack Developer</p>
+                        </div>
+                        <div className="profile-capabilities" aria-label="주요 개발 영역">
+                            <div><span>01</span><strong>Frontend</strong><small>사용자 화면 · Back-Office</small></div>
+                            <div><span>02</span><strong>Backend</strong><small>Java · Spring 기반 업무 로직</small></div>
+                            <div><span>03</span><strong>Operations</strong><small>운영 개선 · CI/CD</small></div>
+                        </div>
+                        <dl className="profile-meta">
+                            <div>
+                                <dt>Experience</dt>
+                                <dd>{careerLabel}</dd>
+                            </div>
+                            <div>
+                                <dt>Focus</dt>
+                                <dd>Web Service</dd>
+                            </div>
+                            <div>
+                                <dt>Based in</dt>
+                                <dd>South Korea</dd>
+                            </div>
+                        </dl>
                     </div>
+                </div>
+
+                <div className="hero-buttons">
+                    <button
+                        className="btn-primary"
+                        onClick={() => handleScrollToSection('projects')}
+                    >
+                        프로젝트 보기 <span aria-hidden="true">↗</span>
+                    </button>
+                    <button
+                        className="btn-secondary"
+                        onClick={() => handleScrollToSection('contact')}
+                    >
+                        연락하기 <span aria-hidden="true">→</span>
+                    </button>
                 </div>
             </div>
 
@@ -68,7 +88,7 @@ export default function Section_1() {
                 <div className="arrow-down">
                     <ArrowDown size={30} strokeWidth={5}/>
                 </div>
-                <small>아래로 스크롤</small>
+                <small>SCROLL</small>
             </div>
         </section>
     );
